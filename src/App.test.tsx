@@ -15,28 +15,6 @@ describe.each(components)(
       render(component);
     });
 
-    it("getByTestId selector performance", async () => {
-      for (const index of Array.from({ length: iterations }).keys()) {
-        const button = screen.getByTestId(`button-test-id-${index}`);
-        await userEvent.click(button);
-        await waitFor(() =>
-          expect(
-            screen.getByTestId(`button-test-id-${index}`),
-          ).toBeInTheDocument(),
-        );
-      }
-    });
-
-    it("getByText selector performance", async () => {
-      for (const index of Array.from({ length: iterations }).keys()) {
-        const button = screen.getByText(`Button text ${index}`);
-        await userEvent.click(button);
-        await waitFor(() =>
-          expect(screen.getByText(`Service text ${index}`)).toBeInTheDocument(),
-        );
-      }
-    });
-
     it("getByRole selector performance", async () => {
       for (const index of Array.from({ length: iterations }).keys()) {
         const button = screen.getByRole("button", {
@@ -59,6 +37,28 @@ describe.each(components)(
         await userEvent.click(button);
         await waitFor(() =>
           expect(screen.getByLabelText(`Service label ${index}`)),
+        );
+      }
+    });
+
+    it("getByText selector performance", async () => {
+      for (const index of Array.from({ length: iterations }).keys()) {
+        const button = screen.getByText(`Button text ${index}`);
+        await userEvent.click(button);
+        await waitFor(() =>
+          expect(screen.getByText(`Service text ${index}`)).toBeInTheDocument(),
+        );
+      }
+    });
+
+    it("getByTestId selector performance", async () => {
+      for (const index of Array.from({ length: iterations }).keys()) {
+        const button = screen.getByTestId(`button-test-id-${index}`);
+        await userEvent.click(button);
+        await waitFor(() =>
+          expect(
+            screen.getByTestId(`button-test-id-${index}`),
+          ).toBeInTheDocument(),
         );
       }
     });

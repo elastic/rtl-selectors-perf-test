@@ -6,6 +6,7 @@ export interface Props {
 }
 
 const App: React.FC<Props> = ({ iterations }) => {
+  const iterationHalf = Math.floor(iterations / 2);
   const [open, setOpen] = useState<Record<string, boolean>>({});
   return renderDeepDivWrappers(
     <div data-testid="root">
@@ -56,7 +57,7 @@ const App: React.FC<Props> = ({ iterations }) => {
                     {`Service text ${index}`}
                   </p>
                 ) : null,
-                iterations,
+                iterationHalf,
               )}
               {renderDeepDivWrappers(
                 <button
@@ -66,7 +67,7 @@ const App: React.FC<Props> = ({ iterations }) => {
                 >
                   {`Button text ${index}`}
                 </button>,
-                iterations,
+                iterationHalf,
               )}
             </article>
           ))}
@@ -79,7 +80,7 @@ const App: React.FC<Props> = ({ iterations }) => {
         </a>
       </footer>
     </div>,
-    iterations,
+    iterationHalf,
   );
 };
 
