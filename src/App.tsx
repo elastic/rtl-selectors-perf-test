@@ -5,12 +5,32 @@ const renderDeepDivWrappers = (child: React.ReactNode, depth: number = 10) => {
     return child;
   }
 
-  return <div>{renderDeepDivWrappers(child, depth - 1)}</div>;
+  return (
+    <div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+      <span>
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </span>
+      <h3>
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+        ut aliquip ex ea commodo consequat. "
+      </h3>
+      <button aria-label="Button label">Button text</button>
+      <button>Button text</button>
+      <label>Label text</label>
+      <label>Label text</label>
+      <p aria-label="Service label">
+        Service text Service text Service text Service text Service text Service
+        Service text Service text Service text Service text Service text Service
+      </p>
+      {renderDeepDivWrappers(child, depth - 1)}
+    </div>
+  );
 };
 
 const App: React.FC = () => {
   const [open, setOpen] = useState<Record<string, boolean>>({});
-  return (
+  return renderDeepDivWrappers(
     <div data-testid="root">
       <header>
         <nav>
@@ -56,6 +76,7 @@ const App: React.FC = () => {
                 >
                   {`Button text ${index}`}
                 </button>,
+                4,
               )}
               {renderDeepDivWrappers(
                 open[index] ? (
@@ -66,6 +87,7 @@ const App: React.FC = () => {
                     {`Service text ${index}`}
                   </p>
                 ) : null,
+                6,
               )}
             </article>
           ))}
@@ -77,7 +99,8 @@ const App: React.FC = () => {
           {"Privacy Policy"}
         </a>
       </footer>
-    </div>
+    </div>,
+    5,
   );
 };
 
