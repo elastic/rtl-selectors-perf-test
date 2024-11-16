@@ -6,7 +6,7 @@ export interface Props {
 }
 
 const App: React.FC<Props> = ({ iterations }) => {
-  const iterationHalf = Math.floor(iterations / 2);
+  const halfIterations = Math.ceil(iterations / 2);
   const [open, setOpen] = useState<Record<string, boolean>>({});
   return renderDeepDivWrappers(
     <div data-testid="root">
@@ -51,23 +51,45 @@ const App: React.FC<Props> = ({ iterations }) => {
               {renderDeepDivWrappers(
                 open[index] ? (
                   <p
+                    title={`Service title ${index}`}
                     aria-label={`Service label ${index}`}
                     data-testid={`service-test-id-${index}`}
                   >
+                    <textarea
+                      aria-label={`Service textarea label ${index}`}
+                      placeholder={`Service textarea placeholder ${index}`}
+                      defaultValue={`Service textarea value ${index}`}
+                    />
                     {`Service text ${index}`}
+                    <img
+                      src={`https://via.placeholder.com/150?text=Image+label+${index}`}
+                      alt={`Service image alt ${index}`}
+                    />
                   </p>
                 ) : null,
-                iterationHalf,
+                halfIterations,
               )}
               {renderDeepDivWrappers(
                 <button
                   data-testid={`button-test-id-${index}`}
                   aria-label={`Button label ${index}`}
+                  title={`Button title ${index}`}
                   onClick={() => setOpen({ ...open, [index]: !open[index] })}
                 >
-                  {`Button text ${index}`}
+                  <img
+                    src={`https://via.placeholder.com/150?text=Image+label+${index}`}
+                    alt={`Button image alt ${index}`}
+                  />
+                  <span>{`Button text ${index}`}</span>
+                  <input
+                    type="text"
+                    defaultValue={`Button input value ${index}`}
+                    placeholder={`Button input placeholder ${index}`}
+                    aria-label={`Button input label ${index}`}
+                  />
+                  ,
                 </button>,
-                iterationHalf,
+                halfIterations,
               )}
             </article>
           ))}
@@ -80,7 +102,7 @@ const App: React.FC<Props> = ({ iterations }) => {
         </a>
       </footer>
     </div>,
-    iterationHalf,
+    halfIterations,
   );
 };
 

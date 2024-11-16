@@ -24,6 +24,39 @@ export const renderDeepDivWrappers = (
         Service text Service text Service text Service text Service text Service
         Service text Service text Service text Service text Service text Service
       </p>
+      <p
+        title={"Service title"}
+        aria-label={"Service label"}
+        data-testid={"service-test-id"}
+      >
+        <textarea
+          aria-label={"Service textarea label"}
+          placeholder={"Service textarea placeholder"}
+          defaultValue={"Service textarea value"}
+        />
+        {"Service text"}
+        <img
+          src={"https://via.placeholder.com/150?text=Image+label"}
+          alt={"Service image alt"}
+        />
+      </p>
+      <button
+        data-testid={"button-test-id-"}
+        aria-label={"Button label"}
+        title={"Button title"}
+      >
+        <img
+          src={"https://via.placeholder.com/150?text=Image+label"}
+          alt={"Button image alt"}
+        />
+        <span>{"Button text"}</span>
+        <input
+          type="text"
+          defaultValue={"Button input value"}
+          placeholder={"Button input placeholder"}
+          aria-label={"Button input label"}
+        />
+      </button>
       {renderDeepDivWrappers(child, depth - 1)}
     </div>
   );
