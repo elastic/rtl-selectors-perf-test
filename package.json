@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest"
+    "test:default": "jest src/App.test.tsx",
+    "test:default:hidden": "jest src/App.defaultHidden.test.tsx"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -59,4 +59,15 @@ visible bottleneck for the CI/CD pipeline.
 
 Here are the preliminary results from CI agent vs local m3 pro run:
 
-<img src="./assets/SCR-20241116-quak.png" width="100%" />
+<img src="./assets/SCR-20241116-quak.png" width="100%" alt="Preliminary results" />
+
+## Default hidden case
+
+Following the classic [discussion](https://github.com/testing-library/dom-testing-library/issues/552) about slow selectors in RTL, we also tested the recommendation to use `configure({ defaultHidden: true })` to speed up the selectors. The results further prove
+that there is negligible algorithmic perf difference in performance between the selectors when the defaultHidden is set to true on a fast modern laptop and even more so on a slower CI agent.
+
+**CI agent results**
+<img src="./assets/ci_hidden_true_before_after.png" width="100%" alt="CI agent results" />
+
+**Local macbook results**
+<img src="./assets/macbook_hidden_true_before_after.png" width="100%" alt="Local macbook results" />
