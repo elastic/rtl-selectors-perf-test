@@ -1,10 +1,6 @@
-import { configure } from "@testing-library/dom";
 import { waitFor, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
 import App from "./App";
-
-configure({ defaultHidden: true });
 
 const components = [
   {
@@ -27,7 +23,7 @@ const components = [
   },
 ];
 
-describe("App defaultHidden test", () => {
+describe("App individual hidden test", () => {
   // The hidden attribute is only only affecting `ByRole` queries
   describe.each(components)(
     "Perf testing $name component with iterations complexity if '$iterations' and depth complexity of '$depth'",
@@ -40,12 +36,14 @@ describe("App defaultHidden test", () => {
         for (const index of Array.from({ length: iterations }).keys()) {
           const button = screen.getByRole("button", {
             name: `Button label ${index}`,
+            hidden: true,
           });
           await userEvent.click(button);
           await waitFor(() =>
             expect(
               screen.getByRole("paragraph", {
                 name: `Service label ${index}`,
+                hidden: true,
               }),
             ),
           );
