@@ -1,10 +1,7 @@
-import { configure } from "@testing-library/dom";
 import { waitFor, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import App from "./App";
-
-configure({ defaultHidden: true });
 
 const components = [
   {
@@ -39,12 +36,14 @@ describe("App.defaultHidden", () => {
         for (const index of Array.from({ length: iterations }).keys()) {
           const button = screen.getByRole("button", {
             name: `Button label ${index}`,
+            hidden: true,
           });
           await userEvent.click(button);
           await waitFor(() =>
             expect(
               screen.getByRole("paragraph", {
                 name: `Service label ${index}`,
+                hidden: true,
               }),
             ),
           );
