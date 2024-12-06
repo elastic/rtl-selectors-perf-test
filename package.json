@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
-    "test:default": "jest src/App.test.tsx",
+    "test:all": "jest src/App.test.tsx",
     "test:hidden:default": "jest src/App.defaultHidden.test.tsx",
     "test:hidden:individual": "jest src/App.individualHidden.test.tsx"
   },

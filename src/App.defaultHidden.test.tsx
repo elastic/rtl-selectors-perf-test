@@ -28,6 +28,7 @@ const components = [
 ];
 
 describe("App.defaultHidden", () => {
+  // The hidden attribute is only only affecting `ByRole` queries
   describe.each(components)(
     "Perf testing $name component with iterations complexity if '$iterations' and depth complexity of '$depth'",
     ({ component, iterations }) => {

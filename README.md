@@ -71,3 +71,5 @@ that there is negligible algorithmic perf difference in performance between the 
 
 **Local macbook results**
 <img src="./assets/macbook_hidden_true_before_after.png" width="100%" alt="Local macbook results" />
+
+Another thing to keep in mind is that `hidden` option is only applicable to `ByRole` queries, and not to `ByLabelText` queries. So if you are using `ByLabelText` queries, you will not see any performance improvement from setting `defaultHidden` to true or individual `hidden` option to true.
