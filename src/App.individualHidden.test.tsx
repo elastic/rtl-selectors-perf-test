@@ -1,5 +1,6 @@
 import { waitFor, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import App from "./App";
 
 const components = [
@@ -23,7 +24,7 @@ const components = [
   },
 ];
 
-describe("App individual hidden test", () => {
+describe("App.defaultHidden", () => {
   // The hidden attribute is only only affecting `ByRole` queries
   describe.each(components)(
     "Perf testing $name component with iterations complexity if '$iterations' and depth complexity of '$depth'",
