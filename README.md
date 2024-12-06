@@ -73,3 +73,23 @@ that there is negligible algorithmic perf difference in performance between the 
 <img src="./assets/macbook_hidden_true_before_after.png" width="100%" alt="Local macbook results" />
 
 Another thing to keep in mind is that `hidden` option is only applicable to `ByRole` queries, and not to `ByLabelText` queries. So if you are using `ByLabelText` queries, you will not see any performance improvement from setting `defaultHidden` to true or individual `hidden` option to true.
+
+## Updates
+
+### EUI, styled-components and dense styling
+
+Added `eui`, `styled-components` and some simulation of dense styling to the components to see how it affects the performance and whether hidden option has any effect on it.
+
+Results:
+
+**CI agent results**
+<img src="./assets/ci-agent-with-eui.png" width="100%" alt="CI agent results with EUI changes" />
+
+**Local macbook results**
+<img src="./assets/local-macbook-with-eui.png" width="100%" alt="Local macbook results with EUI changes" />
+
+### Change Conclusion
+
+The results show that presence of EUI or styles doesn't affect the performance of the selectors significantly. The hidden option also doesn't have any effect on the performance of the selectors when EUI or styles are present.
+
+Algorithmic complexity of the selectors is the main factor that affects the performance of the selectors.
